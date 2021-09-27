@@ -8,14 +8,59 @@ paper = paper.default;
 window.onload = function() {
     // Create an empty project and a view for the canvas:
     paper.setup('myCanvas');
-    // Create a Paper.js Path to draw a line into it:
-    const path = new paper.Path();
-    // Give the stroke a color
-    path.strokeColor = new paper.Color('black');
-    const start = new paper.Point(100, 100);
-    // Move to start and draw a line from there
-    path.moveTo(start);
-    // Note that the plus operator on Point objects does not work
-    // in JavaScript. Instead, we need to call the add() function:
-    path.lineTo(start.add(new paper.Point(200, -50)));
+    paper.view.zoom = 5;
+
+    const centersDistance = 70;
+
+    const {x, y} = paper.view.center;
+
+    const leftOuterRadius = 8;
+    const leftInnerRadius = 4.2;
+    const leftX = x - centersDistance/2;
+    const leftY = y;
+
+    const rightOuterRadius = 8;
+    const rightInnerRadius = 4.2;
+    const rightX = x + centersDistance/2;
+    const rightY = y;
+
+    const leftOuter = new paper.Path.Circle({
+        center: new paper.Point(leftX, leftY),
+        radius: leftOuterRadius,
+        fillColor: 'red'
+    });
+
+    const leftInner = new paper.Path.Circle({
+        center: new paper.Point(leftX, leftY),
+        radius: leftInnerRadius,
+        fillColor: 'blue'
+    });
+
+    const leftRing = leftOuter.subtract(leftInner);
+    leftRing.strokeColor = new paper.Color('black');
+    leftRing.fillColor = new paper.Color('white');
+    leftRing.strokeWidth = 1;
+
+    leftOuter.remove();
+    leftInner.remove();
+
+    const rightOuter = new paper.Path.Circle({
+        center: new paper.Point(rightX, rightY),
+        radius: rightOuterRadius,
+        fillColor: 'red'
+    });
+
+    const rightInner = new paper.Path.Circle({
+        center: new paper.Point(rightX, rightY),
+        radius: rightInnerRadius,
+        fillColor: 'blue'
+    });
+
+    const rightRing = rightOuter.subtract(rightInner);
+    rightRing.strokeColor = new paper.Color('black');
+    rightRing.fillColor = new paper.Color('white');
+    rightRing.strokeWidth = 1;
+
+    rightOuter.remove();
+    rightInner.remove();
 };
