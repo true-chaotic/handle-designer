@@ -1,3 +1,4 @@
+import './app.scss';
 import * as paper from "paper/dist/paper-core";
 
 // @ts-ignore
