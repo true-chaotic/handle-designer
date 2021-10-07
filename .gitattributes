@@ -18,6 +18,9 @@
 *.tif      binary
 *.tiff     binary
 *.ico      binary
+*.js.map   binary
+docs/*.js  binary
+
 # SVG treated as text by default.
 *.svg      text
 

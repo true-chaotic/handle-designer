@@ -1,12 +1,10 @@
-import './app.scss';
+// Create an empty project and a view for the canvas:
 import * as paper from "paper/dist/paper-core";
 
 // @ts-ignore
 paper = paper.default;
 
-// Only executed our code once the DOM is ready.
-window.onload = function() {
-    // Create an empty project and a view for the canvas:
+export default function drawHandle() {
     paper.setup('myCanvas');
     paper.view.zoom = 5;
 
@@ -16,13 +14,13 @@ window.onload = function() {
 
     const leftOuterRadius = 6;
     const leftInnerRadius = 2.5;
-    const leftX = x - centersDistance/2;
+    const leftX = x - centersDistance / 2;
     const leftXMax = leftX - leftOuterRadius;
     const leftY = y;
 
     const rightOuterRadius = 4;
     const rightInnerRadius = 2.1;
-    const rightX = x + centersDistance/2;
+    const rightX = x + centersDistance / 2;
     const rightXmax = rightX + rightOuterRadius;
     const rightY = y;
 
@@ -109,4 +107,4 @@ window.onload = function() {
     const complete = leftArcClean.unite(rightArcClean);
     leftArcClean.remove();
     rightArcClean.remove();
-};
+}
