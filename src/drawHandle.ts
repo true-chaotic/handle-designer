@@ -5,7 +5,6 @@ import * as paper from "paper/dist/paper-core";
 paper = paper.default;
 
 export default function drawHandle() {
-    paper.setup('myCanvas');
     paper.view.zoom = 5;
 
     const centersDistance = 70;
