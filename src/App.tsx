@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container'
 import Button from '@mui/material/Button';
 import * as paper from 'paper/dist/paper-core';
+import { saveAs } from 'file-saver';
 import './app.scss';
 import drawHandle from "./drawHandle";
 
@@ -20,7 +21,10 @@ const App: FC = () => {
     });
 
     const downLoadSvg = useCallback(() => {
-        console.log(paper.project.exportSVG({asString: true}));
+        const svg = paper.project.exportSVG({asString: true});
+        const blob = new Blob([svg as BlobPart], {type: "image/svg+xml;charset=utf-8"});
+
+        saveAs(blob, "handle.svg");
     }, [paper]);
 
     return (
